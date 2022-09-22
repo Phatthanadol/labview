@@ -13,8 +13,11 @@ class CreateELECTCONTROLSTable extends Migration
      */
     public function up()
     {
-        Schema::create('e_l_e_c_t_c_o_n_t_r_o_l_s', function (Blueprint $table) {
+        Schema::create('electcontrols', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('valueelec', 1);
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateELECTCONTROLSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('e_l_e_c_t_c_o_n_t_r_o_l_s');
+        Schema::dropIfExists('electcontrols');
     }
 }
